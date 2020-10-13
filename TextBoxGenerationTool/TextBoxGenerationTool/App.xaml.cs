@@ -1,6 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using TextBoxGenerationTool.Navigation;
+using Autofac;
 
 namespace TextBoxGenerationTool
 {
@@ -9,8 +9,7 @@ namespace TextBoxGenerationTool
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            SetupContainer();
         }
 
         protected override void OnStart()
@@ -23,6 +22,16 @@ namespace TextBoxGenerationTool
 
         protected override void OnResume()
         {
+        }
+
+        private void SetupContainer() 
+        {
+            var containerBuilder = new ContainerBuilder();
+            IoC.RegisterCoreDependencies(containerBuilder);
+            IoC.Publish(containerBuilder);
+
+            var navigationService = IoC.Resolve<INavigationService>();
+            navigationService.InitializeNavigationPage();
         }
     }
 }

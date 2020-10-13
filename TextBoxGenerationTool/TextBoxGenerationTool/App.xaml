@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:TextBoxGenerationTool.Converters"
              x:Class="TextBoxGenerationTool.App">
     <Application.Resources>
-
+        <converter:FontConverter x:Key="FontConverter"/>
+        <x:Boolean x:Key="True">True</x:Boolean>
+        <x:Boolean x:Key="False">False</x:Boolean>
     </Application.Resources>
 </Application>
