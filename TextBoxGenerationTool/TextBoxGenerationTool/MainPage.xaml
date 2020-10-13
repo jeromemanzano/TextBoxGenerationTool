@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TextBoxGenerationTool.ViewModels;assembly=TextBoxGenerationTool"
+             xmlns:custom="clr-namespace:TextBoxGenerationTool.CustomControls;assembly=TextBoxGenerationTool"
+             
+             x:Class="TextBoxGenerationTool.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout 
+            Orientation="Vertical">
+            <RelativeLayout VerticalOptions="Start" HeightRequest="60">
+                <custom:CustomEntry 
+                    x:Name="InputText"
+                    Text="{Binding TestTextBind}"
+                    TextColor="{Binding TextColor}"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    BorderThickness="{Binding BorderSizeSlider}"
+                    Placeholder="Type text here"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}"/>
+                <!--<Label 
+                    x:Name="TextSizeLabel"
+                    Text="Text Size"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=InputText, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=InputText, Property=Y, Constant=60}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Label x:Name="TextFontLabel"
+                    Text="Text Font"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=InputText, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextSizeLabel, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="TextSizeSlider"
+                    Maximum="250"
+                    Minimum="1"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextSizeLabel, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextSizeLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextSizeLabel, Property=Height}"/>
+                <Picker
+                    x:Name="TextFontPicker"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextFontLabel, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextFontLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextFontLabel, Property=Height}"/>-->
+            </RelativeLayout>
+            <RelativeLayout 
+                VerticalOptions="Start">
+                <Label 
+                    x:Name="TextColorHeader"
+                    Text="Text Color"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=20}"/>
+                <Label
+                    x:Name="TextColorLabel"
+                    Text="Color"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorHeader, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorHeader, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="TextColorSlider"
+                    Minimum="0"
+                    HeightRequest="40"
+                    Maximum="16777215"
+                    Value="{Binding TextColorSlider}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Label
+                    x:Name="TextAlphaLabel"
+                    Text="Alpha"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorSlider, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorSlider, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="TextAlphaSlider"
+                    HeightRequest="40"
+                    Minimum="0"
+                    Maximum="1"
+                    Value="{Binding TextAlpha}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextAlphaLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextAlphaLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <BoxView
+                    x:Name="TextColorBoxView"
+                    HeightRequest="100"
+                    BackgroundColor="{Binding TextColor}"
+                    Opacity="{Binding TextAlpha}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextAlphaSlider, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TextColorLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+            </RelativeLayout>
+            <RelativeLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <Label 
+                    x:Name="BackgroundColorHeader"
+                    Text="Background Color"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}"/>
+                <Label
+                    x:Name="BackgroundColorLabel"
+                    Text="Color"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorHeader, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorHeader, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="BackgroundColorSlider"
+                    Minimum="0"
+                    HeightRequest="40"
+                    Maximum="16777215"
+                    Value="{Binding BackgroundColorSlider}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Label
+                    x:Name="BackgroundAlphaLabel"
+                    Text="Alpha"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorSlider, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorSlider, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="BackgroundAlphaSlider"
+                    HeightRequest="40"
+                    Minimum="0"
+                    Maximum="1"
+                    Value="{Binding BackgroundAlpha}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundAlphaLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundAlphaLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <BoxView
+                    x:Name="BackgroundColorBoxView"
+                    HeightRequest="100"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    Opacity="{Binding BackgroundAlpha}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundAlphaSlider, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BackgroundColorLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+            </RelativeLayout>
+            <RelativeLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <Label 
+                    x:Name="BorderSizeLabel"
+                    Text="Border Size"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="BorderSizeSlider"
+                    Maximum="40"
+                    Minimum="0"
+                    Value="{Binding BorderSizeSlider}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderSizeLabel, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderSizeLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderSizeLabel, Property=Height}"/>
+                <Label 
+                    x:Name="BorderColorHeader"
+                    Text="Border Color"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderSizeLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderSizeLabel, Property=Y, Constant=30}"/>
+                <Label
+                    x:Name="BorderColorLabel"
+                    Text="Color"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorHeader, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorHeader, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="BorderColorSlider"
+                    Minimum="0"
+                    HeightRequest="40"
+                    Maximum="16777215"
+                    Value="{Binding BorderColorSlider}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Label
+                    x:Name="BorderAlphaLabel"
+                    Text="Alpha"
+                    InputTransparent="True"
+                    HorizontalTextAlignment="Center"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorSlider, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorSlider, Property=Y, Constant=40}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="BorderAlphaSlider"
+                    HeightRequest="40"
+                    Minimum="0"
+                    Maximum="1"
+                    Value="{Binding BorderAlpha}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderAlphaLabel, Property=X}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderAlphaLabel, Property=Y, Constant=10}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <BoxView
+                    x:Name="BorderColorBoxView"
+                    HeightRequest="100"
+                    BackgroundColor="{Binding BorderColor}"
+                    Opacity="{Binding BorderAlpha}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderAlphaSlider, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BorderColorLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+            </RelativeLayout>
+            <!--<RelativeLayout 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <Label 
+                    x:Name="ShadowSizeLabel"
+                    Text="Shadow Size"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"/>
+                <Slider
+                    x:Name="ShadowSizeSlider"
+                    Maximum="40"
+                    Minimum="1"
+                    Value="{Binding ShadowSizeSlider}"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="LightGray"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ShadowSizeLabel, Property=Width, Constant=20}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ShadowSizeLabel, Property=Y}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-20}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ShadowSizeLabel, Property=Height}"/>
+            </RelativeLayout>-->
+            <Button
+                Text="Place Text"
+                Margin="50"
+                HorizontalOptions="FillAndExpand"
+                Padding="10"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

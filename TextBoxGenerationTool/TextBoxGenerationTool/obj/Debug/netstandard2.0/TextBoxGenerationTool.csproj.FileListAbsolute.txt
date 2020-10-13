@@ -1,0 +1,13 @@
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\bin\Debug\netstandard2.0\TextBoxGenerationTool.deps.json
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\bin\Debug\netstandard2.0\TextBoxGenerationTool.dll
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\bin\Debug\netstandard2.0\ref\TextBoxGenerationTool.dll
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\bin\Debug\netstandard2.0\TextBoxGenerationTool.pdb
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\TextBoxGenerationTool.AssemblyInfoInputs.cache
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\TextBoxGenerationTool.AssemblyInfo.cs
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\TextBoxGenerationTool.csproj.CoreCompileInputs.cache
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\XamlC.stamp
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\TextBoxGenerationTool.dll
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\ref\TextBoxGenerationTool.dll
+C:\astro.projects\Upwork Clients\TextBoxGenerationTool\TextBoxGenerationTool\TextBoxGenerationTool\obj\Debug\netstandard2.0\TextBoxGenerationTool.pdb
