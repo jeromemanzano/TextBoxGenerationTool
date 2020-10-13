@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using Android.Content;
-using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Graphics.Drawables.Shapes;
 using TextBoxGenerationTool.CustomControls;
 using TextBoxGenerationTool.Droid.CustomRenderers;
 using Xamarin.Forms;
@@ -18,6 +16,11 @@ namespace TextBoxGenerationTool.Droid.CustomRenderers
         {
         }
 
+        protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
+        {
+            base.OnElementChanged(e);
+        }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -29,22 +32,23 @@ namespace TextBoxGenerationTool.Droid.CustomRenderers
                 {
                     var formsColor = ((CustomEntry)Element).BorderColor;
                     var borderThickness = ((CustomEntry)Element).BorderThickness;
-
+                    var padding = borderThickness + 2;
                     var nativeEditText = (global::Android.Widget.EditText)Control;
 
+                    var border = new GradientDrawable();
+                    border.SetStroke(borderThickness, formsColor.ToAndroid());
 
-                    //TODO: adjust border accordingly
-                    ShapeDrawable shape = new ShapeDrawable(new RectShape());
-                    shape.Paint.Color = formsColor.ToAndroid();
-                    shape.Paint.SetStyle(Paint.Style.Stroke);
-                    shape.Paint.StrokeWidth = borderThickness;
-                    shape.SetPadding(new Rect(borderThickness, borderThickness, borderThickness, borderThickness));
-                    nativeEditText.Background = shape;
+                    nativeEditText.Background = border;
+                    nativeEditText.SetPadding(padding, padding, padding, padding);
+                }
 
-                    nativeEditText.SetPadding(borderThickness + 2, borderThickness + 2, borderThickness + 2, borderThickness + 2);
+                if (e.PropertyName == nameof(CustomEntry.ShadowSize))
+                {
+                    //TODO: implement
+                    //var shadowSize = ((CustomEntry)Element).ShadowSize;
+                    //var nativeEditText = (global::Android.Widget.EditText)Control;
                 }
             }
-
         }
     }
 }
