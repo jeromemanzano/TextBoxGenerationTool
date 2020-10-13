@@ -5,7 +5,7 @@ using TextBoxGenerationTool.Services;
 
 namespace TextBoxGenerationTool.ViewModels
 {
-    public abstract class BaseViewModel : Observable, IPageViewModel
+    public abstract class BaseViewModel : Observable
     {
         private readonly IDialogService _dialogService;
         protected readonly INavigationService _navigationService;
@@ -47,7 +47,7 @@ namespace TextBoxGenerationTool.ViewModels
         }
     }
 
-    public abstract class BaseViewModel<T> : BaseViewModel, IPageViewModel
+    public abstract class BaseViewModel<T> : BaseViewModel
     {
         public virtual Task Initialize(T parameter)
         {
