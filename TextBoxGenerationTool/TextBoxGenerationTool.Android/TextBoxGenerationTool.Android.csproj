@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRenderers\CustomEntryRenderer_Android.cs" />
+    <Compile Include="CustomRenderers\CustomLabelRenderer_Android.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,5 +10,7 @@ namespace TextBoxGenerationTool.Navigation
         Task PushAsync(Type viewModelType);
 
         Task PushAsync<T>(Type viewModelType, T parameter);
+
+        Task PopAsync(object parameter = null);
     }
 }

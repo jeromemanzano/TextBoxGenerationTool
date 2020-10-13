@@ -31,6 +31,11 @@ namespace TextBoxGenerationTool.ViewModels
         {
             return NavigationService.PushAsync<TParameter>(viewModelType, parameter);
         }
+
+        public Task Close(object parameter = null) 
+        {
+            return NavigationService.PopAsync(parameter);
+        }
     }
 
     public abstract class BaseViewModel<T> : BaseViewModel, IPageViewModel

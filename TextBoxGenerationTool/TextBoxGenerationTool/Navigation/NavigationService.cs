@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TextBoxGenerationTool.ViewModels;
 using Xamarin.Forms;
@@ -10,8 +10,7 @@ namespace TextBoxGenerationTool.Navigation
 {
     public class NavigationService : INavigationService
     {
-
-        protected ConditionalWeakTable<IPageViewModel, TaskCompletionSource<object>> _tcsResults = new ConditionalWeakTable<IPageViewModel, TaskCompletionSource<object>>();
+        private object _popParameter;
 
         public NavigationPage NavigationPage
         {
@@ -23,29 +22,52 @@ namespace TextBoxGenerationTool.Navigation
         
         public async Task PushAsync(Type viewModelType)
         {
-            Page page = CreatePageWithViewModel(viewModelType);
+            _popParameter = null;
+
+            var page = CreatePageWithViewModel(viewModelType);
 
             var vm = page.BindingContext as BaseViewModel;
-            await vm.Initialize();
 
+            await vm.Initialize();
             await NavigationPage.PushAsync(page);
         }
 
         public async Task PushAsync<T>(Type viewModelType, T parameter)
         {
-            Page page = CreatePageWithViewModel(viewModelType);
+            _popParameter = null;
+
+            var page = CreatePageWithViewModel(viewModelType);
 
             var vm = page.BindingContext as BaseViewModel<T>;
-            await vm.Initialize(parameter);
 
+            await vm.Initialize(parameter);
             await NavigationPage.PushAsync(page);
+        }
+
+        public Task PopAsync(object parameter = null) 
+        {
+            _popParameter = parameter;
+            return NavigationPage.PopAsync();
         }
 
         public void InitializeNavigationPage() 
         {
             var page = CreatePageWithViewModel(typeof(MainViewModel));
             (page.BindingContext as BaseViewModel).Initialize();
-            Application.Current.MainPage = new NavigationPage(page);
+
+            var navigationPage = new NavigationPage(page);
+            Application.Current.MainPage = navigationPage;
+
+            navigationPage.Popped += NavigationPage_Popped;
+        }
+
+        private void NavigationPage_Popped(object sender, NavigationEventArgs e)
+        {
+            if (this.NavigationPage.CurrentPage.BindingContext is BaseViewModel viewModel)
+            {
+                viewModel.TopPagePopped(_popParameter);
+                _popParameter = null;
+            }
         }
 
         private Type GetPageTypeForViewModel(Type viewModelType)

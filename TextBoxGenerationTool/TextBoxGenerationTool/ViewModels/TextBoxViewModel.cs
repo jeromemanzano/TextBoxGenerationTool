@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using MvvmHelpers.Commands;
+using TextBoxGenerationTool.Models;
 using Xamarin.Forms;
 
 namespace TextBoxGenerationTool.ViewModels
@@ -154,6 +157,30 @@ namespace TextBoxGenerationTool.ViewModels
         {
             get => _showUrl;
             private set => Set(ref _showUrl, value);
+        }
+
+        private ICommand _closePageCommand;
+        public ICommand ClosePageCommand
+        {
+            get => _closePageCommand ?? (_closePageCommand = new AsyncCommand(ClosePage));
+        }
+
+        private Task ClosePage()
+        {
+            var result = new TextBoxPageResultModel();
+            result.TextInfoModel = new TextInfoModel 
+            { 
+                TextColor = TextColor,
+                BackgroundColor= BackgroundColor,
+                BorderColor = BorderColor,
+                FontSize = FontSizeSlider,
+                BorderSize = BorderSizeSlider,
+                ShadowSize = ShadowSizeSlider,
+                SelectedFont = SelectedFont,
+                InputText = InputText
+            };
+
+            return Close(result);
         }
 
         private void UpdateTextColor()
