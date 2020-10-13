@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TextBoxGenerationTool.CustomControls;assembly=TextBoxGenerationTool"
+             x:Class="TextBoxGenerationTool.Pages.TextBoxPage">
+    <ScrollView VerticalOptions="StartAndExpand">
+        <Grid Padding="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <custom:CustomEntry 
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,10,0,20"
+                x:Name="InputText"
+                Placeholder="Type text here"
+                AutoSize="TextChanges"               
+                Text="{Binding InputText}"
+                TextColor="{Binding TextColor}"
+                FontSize="{Binding FontSizeSlider}"
+                BackgroundColor="{Binding BackgroundColor}"
+                BorderColor="{Binding BorderColor}"
+                BorderThickness="{Binding BorderSizeSlider}"
+                ShadowSize="{Binding ShadowSizeSlider}"
+                FontFamily="{Binding SelectedFont, Converter={StaticResource FontConverter}}"/>
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                x:Name="TextSizeLabel"
+                Text="Text Size"/>
+            <Label 
+                Grid.Row="2"
+                Grid.Column="0"
+                x:Name="TextFontLabel"
+                Text="Text Font"/>
+            <Slider
+                Grid.Row="1"
+                Grid.Column="1"
+                x:Name="TextSizeSlider"
+                Maximum="250"
+                Minimum="1"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"
+                Value="{Binding FontSizeSlider}"/>
+            <Picker
+                Grid.Row="2"
+                Grid.Column="1"
+                x:Name="TextFontPicker"
+                FontSize="12"
+                SelectedItem="{Binding SelectedFont}"
+                ItemsSource="{Binding Fonts}"/>
+            <Label 
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                x:Name="TextColorHeader"
+                Text="Text Color"/>
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                x:Name="TextColorLabel"
+                Text="Color"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="5"
+                Grid.Column="0"
+                x:Name="TextColorSlider"
+                Minimum="0"
+                Maximum="16777215"
+                Value="{Binding TextColorSlider}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <Label
+                Grid.Row="6"
+                Grid.Column="0"
+                x:Name="TextAlphaLabel"
+                Text="Alpha"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="7"
+                Grid.Column="0"
+                x:Name="TextAlphaSlider"
+                Minimum="0"
+                Maximum="1"
+                Value="{Binding TextAlpha}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <BoxView
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.RowSpan="4"
+                x:Name="TextColorBoxView"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="{Binding TextColor}"
+                Opacity="{Binding TextAlpha}"/>
+            <Label 
+                Grid.Row="8"
+                Grid.Column="0"
+                x:Name="BackgroundColorHeader"
+                Text="Background Color"/>
+            <Label
+                Grid.Row="9"
+                Grid.Column="0"
+                x:Name="BackgroundColorLabel"
+                Text="Color"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="10"
+                Grid.Column="0"
+                x:Name="BackgroundColorSlider"
+                Minimum="0"
+                Maximum="16777215"
+                Value="{Binding BackgroundColorSlider}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <Label
+                Grid.Row="11"
+                Grid.Column="0"
+                x:Name="BackgroundAlphaLabel"
+                Text="Alpha"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="12"
+                Grid.Column="0"
+                x:Name="BackgroundAlphaSlider"
+                Minimum="0"
+                Maximum="1"
+                Value="{Binding BackgroundAlpha}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <BoxView
+                Grid.Row="9"
+                Grid.Column="1"
+                Grid.RowSpan="4"
+                x:Name="BackgroundColorBoxView"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="{Binding BackgroundColor}"
+                Opacity="{Binding BackgroundAlpha}"/>
+            <Label 
+                Grid.Row="13"
+                Grid.Column="0"
+                x:Name="BorderSizeLabel"
+                Text="Border Size"/>
+            <Slider
+                Grid.Row="13"
+                Grid.Column="1"
+                x:Name="BorderSizeSlider"
+                Maximum="40"
+                Minimum="0"
+                Value="{Binding BorderSizeSlider}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <Label 
+                Grid.Row="14"
+                Grid.Column="0"
+                x:Name="BorderColorHeader"
+                Text="Border Color"/>
+            <Label
+                Grid.Row="15"
+                Grid.Column="0"
+                x:Name="BorderColorLabel"
+                Text="Color"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="16"
+                Grid.Column="0"
+                x:Name="BorderColorSlider"
+                Minimum="0"
+                Maximum="16777215"
+                Value="{Binding BorderColorSlider}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <Label
+                Grid.Row="17"
+                Grid.Column="0"
+                x:Name="BorderAlphaLabel"
+                Text="Alpha"
+                InputTransparent="True"
+                HorizontalTextAlignment="Center"/>
+            <Slider
+                Grid.Row="18"
+                Grid.Column="0"
+                x:Name="BorderAlphaSlider"
+                Minimum="0"
+                Maximum="1"
+                Value="{Binding BorderAlpha}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <BoxView
+                Grid.Row="15"
+                Grid.Column="1"
+                Grid.RowSpan="4"
+                x:Name="BorderColorBoxView"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="{Binding BorderColor}"
+                Opacity="{Binding BorderAlpha}"/>
+            <Label 
+                Grid.Row="19"
+                Grid.Column="0"
+                x:Name="ShadowSizeLabel"
+                Text="Shadow Size"/>
+            <Slider
+                Grid.Row="19"
+                Grid.Column="1"
+                x:Name="ShadowSizeSlider"
+                Maximum="40"
+                Minimum="0"
+                Value="{Binding ShadowSizeSlider}"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="LightGray"/>
+            <StackLayout
+                IsVisible="{Binding ShowUrl}"
+                Grid.Row="20"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Orientation="Horizontal">
+                <Entry
+                    Placeholder="Type url here"
+                    HorizontalOptions="FillAndExpand"/>
+                <Button
+                    HorizontalOptions="End"
+                    Padding="10"
+                    Text="Verify"/>
+            </StackLayout>
+            <Button 
+                Grid.Row="21"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding OpenTextPageCommand}"
+                Padding="10"
+                Text="Place Text"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

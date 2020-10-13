@@ -17,5 +17,12 @@ namespace TextBoxGenerationTool.CustomControls
             get { return (int)GetValue(BorderThicknessProperty); }
             set { SetValue(BorderThicknessProperty, value); }
         }
+
+        public static BindableProperty ShadowSizeProperty = BindableProperty.Create(nameof(ShadowSize), typeof(int), typeof(int), 0);
+        public int ShadowSize
+        {
+            get { return (int)GetValue(ShadowSizeProperty); }
+            set { SetValue(ShadowSizeProperty, value); }
+        }
     }
 }

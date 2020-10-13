@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace TextBoxGenerationTool.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class Observable : INotifyPropertyChanged
     {
         protected void Set<U>(ref U backingStore, U value, [CallerMemberName] string propertyName = null, Action onChanged = null, Action<U> onChanging = null)
         {
