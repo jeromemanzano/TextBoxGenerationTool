@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TextBoxGenerationTool.Navigation;
+using TextBoxGenerationTool.Services;
 
 namespace TextBoxGenerationTool.ViewModels
 {
     public abstract class BaseViewModel : Observable, IPageViewModel
     {
+        private readonly IDialogService _dialogService;
+        protected readonly INavigationService _navigationService;
+
         public BaseViewModel()
         {
-            NavigationService = IoC.Resolve<INavigationService>();
+            _navigationService = IoC.Resolve<INavigationService>();
+            _dialogService = IoC.Resolve<IDialogService>();
         }
 
-        protected INavigationService NavigationService { get; }
 
         public virtual Task Initialize() 
         {
@@ -24,17 +28,22 @@ namespace TextBoxGenerationTool.ViewModels
 
         public Task NavigateTo(Type viewModelType) 
         {
-            return NavigationService.PushAsync(viewModelType);
+            return _navigationService.PushAsync(viewModelType);
         }
 
         public Task NavigateTo<TParameter>(Type viewModelType, TParameter parameter)
         {
-            return NavigationService.PushAsync<TParameter>(viewModelType, parameter);
+            return _navigationService.PushAsync<TParameter>(viewModelType, parameter);
         }
 
         public Task Close(object parameter = null) 
         {
-            return NavigationService.PopAsync(parameter);
+            return _navigationService.PopAsync(parameter);
+        }
+
+        public Task DisplayAlert(string title, string message, string cancel = "close") 
+        {
+            return _dialogService.DisplayAlert(title, message, cancel);
         }
     }
 

@@ -2,6 +2,7 @@
 using Autofac;
 using TextBoxGenerationTool.Navigation;
 using TextBoxGenerationTool.Pages;
+using TextBoxGenerationTool.Services;
 using TextBoxGenerationTool.ViewModels;
 
 namespace TextBoxGenerationTool
@@ -25,6 +26,8 @@ namespace TextBoxGenerationTool
 
             // services
             builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+            builder.RegisterType<RestService>().As<IRestService>().SingleInstance();
+            builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
         }
 
         public static T Resolve<T>() => _container.Resolve<T>();

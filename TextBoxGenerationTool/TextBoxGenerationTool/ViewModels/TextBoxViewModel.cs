@@ -1,14 +1,24 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
 using TextBoxGenerationTool.Models;
+using TextBoxGenerationTool.Services;
 using Xamarin.Forms;
 
 namespace TextBoxGenerationTool.ViewModels
 {
     public class TextBoxViewModel : BaseViewModel<bool>
     {
+        private readonly IRestService _restService;
+
+        public TextBoxViewModel(IRestService restService)
+        {
+            _restService = restService;
+        }
+
         public override Task Initialize(bool showUrl)
         {
             TextColorSlider = 0;
@@ -152,6 +162,13 @@ namespace TextBoxGenerationTool.ViewModels
             set => Set(ref _inputText, value);
         }
 
+        private string _inputUrl;
+        public string InputUrl
+        {
+            get => _inputUrl;
+            set => Set(ref _inputUrl, value);
+        }
+
         private bool _showUrl;
         public bool ShowUrl
         {
@@ -159,10 +176,50 @@ namespace TextBoxGenerationTool.ViewModels
             private set => Set(ref _showUrl, value);
         }
 
+        private bool? _urlValid;
+        public bool? UrlValid
+        {
+            get => _urlValid;
+            private set => Set(ref _urlValid, value);
+        }
+        
+
         private ICommand _closePageCommand;
         public ICommand ClosePageCommand
         {
             get => _closePageCommand ?? (_closePageCommand = new AsyncCommand(ClosePage));
+        }
+
+        private ICommand _verifyUrlCommand;
+        public ICommand VerifyUrlCommand
+        {
+            get => _verifyUrlCommand ?? (_verifyUrlCommand = new AsyncCommand(VerifyUrl));
+        }
+
+        private async Task VerifyUrl() 
+        {
+            try
+            {
+                var cts = new CancellationTokenSource(30000);
+                var result = await _restService.VerifyUrl(InputUrl, cts.Token);
+
+                if (result == System.Net.HttpStatusCode.OK)
+                {
+                    await DisplayAlert("Success", "200 - Valid Url");
+                }
+                else 
+                { 
+                    await DisplayAlert("Error", $"{result} - Invalid Url");
+                }
+            }
+            catch (OperationCanceledException opEx) 
+            { 
+                await DisplayAlert("Error", "We didn't receive any response. Please check your connection and try again");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message);
+            }
         }
 
         private Task ClosePage()

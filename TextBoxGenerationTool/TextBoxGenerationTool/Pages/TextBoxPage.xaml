@@ -245,9 +245,11 @@
                 Grid.ColumnSpan="2"
                 Orientation="Horizontal">
                 <Entry
+                    Text="{Binding InputUrl}"
                     Placeholder="Type url here"
                     HorizontalOptions="FillAndExpand"/>
                 <Button
+                    Command="{Binding VerifyUrlCommand}"
                     HorizontalOptions="End"
                     Padding="10"
                     Text="Verify"/>

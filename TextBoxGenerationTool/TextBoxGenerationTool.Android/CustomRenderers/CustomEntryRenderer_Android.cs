@@ -19,6 +19,11 @@ namespace TextBoxGenerationTool.Droid.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
+
+            if (e != null)
+            {
+                Control.Background = new GradientDrawable();
+            }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
