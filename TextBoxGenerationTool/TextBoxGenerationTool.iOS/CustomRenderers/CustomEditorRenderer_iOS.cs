@@ -15,16 +15,14 @@ namespace TextBoxGenerationTool.iOS.CustomRenderers
         {
             base.OnElementChanged(e);
 
-            var label = (CustomEditor)Element;
+            var editor = (CustomEditor)Element;
 
-            if (e == null || label == null)
+            if (e == null || editor == null)
             {
                 return;
-
             }
 
-            //Control.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Always;
-            Control.Layer.BorderColor = label.BorderColor.ToCGColor();
+            Control.Layer.BorderColor = editor.BorderColor.ToCGColor();
             SetBorderThickness();
         }
 
@@ -49,39 +47,16 @@ namespace TextBoxGenerationTool.iOS.CustomRenderers
             {
                 SetBorderThickness();
             }
-
         }
 
         private void SetBorderThickness() 
         {
             var custom = (CustomEditor)Element;
 
-            Control.TextContainerInset = new UIEdgeInsets(custom.BorderThickness,
-                custom.BorderThickness, custom.BorderThickness, custom.BorderThickness);
             Control.Layer.BorderWidth = custom.BorderThickness;
+            Control.TextContainerInset = new UIEdgeInsets(custom.BorderThickness, custom.BorderThickness, custom.BorderThickness, custom.BorderThickness);
 
             Control.SetNeedsDisplay();
         }
-
-
-        //public override void DrawLayer(CALayer layer, CGContext context)
-        //{
-        //    base.DrawLayer(layer, context);
-        //}
-
-        //public override void Draw(CGRect rect)
-        //{
-        //    var custom = (CustomEntry)Element;
-
-        //    if (custom != null)
-        //    {
-        //        var inset = new UIEdgeInsets((nfloat)custom.BorderThickness,
-        //            (nfloat)custom.BorderThickness, (nfloat)custom.BorderThickness, (nfloat)custom.BorderThickness);
-        //        base.Draw(inset.InsetRect(rect));
-        //        return;
-        //    }
-
-        //    base.Draw(rect);
-        //}
     }
 }

@@ -11,7 +11,7 @@ namespace TextBoxGenerationTool.CustomControls
             set { SetValue(BorderColorProperty, value); }
         }
 
-        public static BindableProperty BorderThicknessProperty = BindableProperty.Create(nameof(BorderThickness), typeof(int), typeof(int), 0);
+        public static BindableProperty BorderThicknessProperty = BindableProperty.Create(nameof(BorderThickness), typeof(int), typeof(int), 0, BindingMode.OneWay, null, OnBorderPropertyChanged);
         public int BorderThickness
         {
             get { return (int)GetValue(BorderThicknessProperty); }
@@ -23,6 +23,12 @@ namespace TextBoxGenerationTool.CustomControls
         {
             get { return (int)GetValue(ShadowSizeProperty); }
             set { SetValue(ShadowSizeProperty, value); }
+        }
+
+        private static void OnBorderPropertyChanged(BindableObject bindable, object value, object newValue) 
+        {
+            var control = (CustomEditor)bindable;
+            control.InvalidateMeasure();
         }
     }
 }
