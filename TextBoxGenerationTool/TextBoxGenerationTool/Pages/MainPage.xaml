@@ -49,6 +49,7 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Start"
                     InputTransparent="True"
+                    IsSpellCheckEnabled="false"
                     Text="{Binding InputText}"
                     TextColor="{Binding TextColor}"
                     FontSize="{Binding FontSize}"

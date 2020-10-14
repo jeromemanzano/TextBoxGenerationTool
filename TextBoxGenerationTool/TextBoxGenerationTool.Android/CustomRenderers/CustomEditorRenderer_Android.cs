@@ -52,11 +52,12 @@ namespace TextBoxGenerationTool.Droid.CustomRenderers
             var padding = borderThickness + 2;
             var nativeEditText = (global::Android.Widget.EditText)Control;
 
+            nativeEditText.SetPadding(padding, nativeEditText.PaddingTop, padding, nativeEditText.PaddingBottom);
+
             var border = new GradientDrawable();
             border.SetStroke(borderThickness, formsColor.ToAndroid());
 
             nativeEditText.Background = border;
-            nativeEditText.SetPadding(padding, padding, padding, padding);
         }
     }
 }

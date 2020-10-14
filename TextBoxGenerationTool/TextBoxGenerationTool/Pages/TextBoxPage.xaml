@@ -45,11 +45,12 @@
                 Grid.ColumnSpan="2">
                 <custom:CustomEditor 
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="StartAndExpand"
+                    VerticalOptions="Fill"
                     x:Name="InputText"
                     Placeholder="Type text here"
                     AutoSize="TextChanges"   
                     Margin="0"
+                    IsSpellCheckEnabled="false"
                     Text="{Binding InputText}"
                     TextColor="{Binding TextColor}"
                     FontSize="{Binding FontSizeSlider}"
