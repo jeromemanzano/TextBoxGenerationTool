@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,12 +23,14 @@ namespace TextBoxGenerationTool.ViewModels
         public override Task Initialize(bool showUrl)
         {
             TextColorSlider = 0;
+            TextAlpha = 1;
             BackgroundColorSlider = 0;
             BorderColorSlider = 0;
             BorderSizeSlider = 0;
-            FontSizeSlider = 10;
+            FontSizeSlider = 15;
+            ShadowSizeSlider = 0;
 
-            SelectedFont = "Sindentosa";
+            SelectedFont = Fonts.First();
 
             ShowUrl = showUrl;
 
@@ -236,6 +239,15 @@ namespace TextBoxGenerationTool.ViewModels
                 SelectedFont = SelectedFont,
                 InputText = InputText
             };
+
+            if (ShowUrl)
+            {
+                result.UrlInfoModel = new UrlInfoModel()
+                {
+                    IsVerified = UrlValid == true,
+                    Url = InputUrl
+                };
+            }
 
             return Close(result);
         }

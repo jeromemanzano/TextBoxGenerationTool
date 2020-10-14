@@ -38,12 +38,8 @@ namespace TextBoxGenerationTool.ViewModels
 
             var urlParam = popParam.UrlInfoModel;
 
-            if (urlParam != null)
-            {
-                //TODO: implement
-            }
+            TextVisible = true;
         }
-
 
         private int _borderSize;
         public int BorderSize
@@ -99,6 +95,13 @@ namespace TextBoxGenerationTool.ViewModels
         {
             get => _inputText;
             private set => Set(ref _inputText, value);
+        }
+
+        private bool _textVisible;
+        public bool TextVisible
+        {
+            get => _textVisible;
+            private set => Set(ref _textVisible, value);
         }
 
         private ICommand _openTextPageCommand;

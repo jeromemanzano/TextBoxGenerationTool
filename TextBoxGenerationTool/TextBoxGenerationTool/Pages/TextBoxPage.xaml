@@ -32,22 +32,32 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <custom:CustomEntry 
+            <custom:CustomFrame          
+                ShadowSize="{Binding ShadowSizeSlider}"
                 Grid.Row="0"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="0,10,0,20"
-                x:Name="InputText"
-                Placeholder="Type text here"
-                AutoSize="TextChanges"               
-                Text="{Binding InputText}"
-                TextColor="{Binding TextColor}"
-                FontSize="{Binding FontSizeSlider}"
+                HasShadow="True"
                 BackgroundColor="{Binding BackgroundColor}"
-                BorderColor="{Binding BorderColor}"
-                BorderThickness="{Binding BorderSizeSlider}"
-                ShadowSize="{Binding ShadowSizeSlider}"
-                FontFamily="{Binding SelectedFont, Converter={StaticResource FontConverter}}"/>
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
+                Padding="0"
+                CornerRadius="0"
+                Grid.ColumnSpan="2">
+                <custom:CustomEditor 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    x:Name="InputText"
+                    Placeholder="Type text here"
+                    AutoSize="TextChanges"   
+                    Margin="0"
+                    Text="{Binding InputText}"
+                    TextColor="{Binding TextColor}"
+                    FontSize="{Binding FontSizeSlider}"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    BorderThickness="{Binding BorderSizeSlider}"
+                    FontFamily="{Binding SelectedFont}"/>
+            </custom:CustomFrame>
             <Label 
                 Grid.Row="1"
                 Grid.Column="0"

@@ -7,5 +7,11 @@
         <converter:FontConverter x:Key="FontConverter"/>
         <x:Boolean x:Key="True">True</x:Boolean>
         <x:Boolean x:Key="False">False</x:Boolean>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
     </Application.Resources>
 </Application>
