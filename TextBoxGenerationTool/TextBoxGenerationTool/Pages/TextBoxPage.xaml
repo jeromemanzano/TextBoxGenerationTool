@@ -99,15 +99,14 @@
                 Text="Color"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:ColorSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="5"
                 Grid.Column="0"
-                x:Name="TextColorSlider"
                 Minimum="0"
                 Maximum="408"
-                Value="{Binding TextColorSlider}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding TextColorSlider}"/>
             <Label
                 Grid.Row="6"
                 Grid.Column="0"
@@ -115,15 +114,14 @@
                 Text="Alpha"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:AlphaSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="7"
                 Grid.Column="0"
-                x:Name="TextAlphaSlider"
                 Minimum="0"
                 Maximum="1"
-                Value="{Binding TextAlpha}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding TextAlpha}"/>
             <Frame
                 Grid.Row="4"
                 Grid.Column="1"
@@ -148,15 +146,14 @@
                 Text="Color"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:ColorSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="10"
                 Grid.Column="0"
-                x:Name="BackgroundColorSlider"
                 Minimum="0"
                 Maximum="408"
-                Value="{Binding BackgroundColorSlider}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding BackgroundColorSlider}"/>
             <Label
                 Grid.Row="11"
                 Grid.Column="0"
@@ -164,15 +161,14 @@
                 Text="Alpha"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:AlphaSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="12"
                 Grid.Column="0"
-                x:Name="BackgroundAlphaSlider"
                 Minimum="0"
                 Maximum="1"
-                Value="{Binding BackgroundAlpha}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding BackgroundAlpha}"/>
             <Frame
                 Grid.Row="9"
                 Grid.Column="1"
@@ -211,15 +207,14 @@
                 Text="Color"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:ColorSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="16"
                 Grid.Column="0"
-                x:Name="BorderColorSlider"
                 Minimum="0"
                 Maximum="408"
-                Value="{Binding BorderColorSlider}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding BorderColorSlider}"/>
             <Label
                 Grid.Row="17"
                 Grid.Column="0"
@@ -227,15 +222,14 @@
                 Text="Alpha"
                 InputTransparent="True"
                 HorizontalTextAlignment="Center"/>
-            <Slider
+            <custom:AlphaSlider
+                Margin="0,10,0,10"
+                HeightRequest="10"
                 Grid.Row="18"
                 Grid.Column="0"
-                x:Name="BorderAlphaSlider"
                 Minimum="0"
                 Maximum="1"
-                Value="{Binding BorderAlpha}"
-                MinimumTrackColor="Red"
-                MaximumTrackColor="LightGray"/>
+                Value="{Binding BorderAlpha}"/>
             <Frame
                 Grid.Row="15"
                 Grid.Column="1"

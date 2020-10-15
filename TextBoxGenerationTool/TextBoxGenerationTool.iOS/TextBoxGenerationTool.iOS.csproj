@@ -63,6 +63,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\AlphaSliderRenderer_iOS.cs" />
+    <Compile Include="CustomRenderers\ColorSliderRenderer_iOS.cs" />
     <Compile Include="CustomRenderers\CustomEditorRenderer_iOS.cs" />
     <Compile Include="CustomRenderers\CustomFrameRenderer_iOS.cs" />
     <Compile Include="Main.cs" />
