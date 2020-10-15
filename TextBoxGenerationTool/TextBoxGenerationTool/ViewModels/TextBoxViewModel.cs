@@ -23,7 +23,6 @@ namespace TextBoxGenerationTool.ViewModels
         public override Task Initialize(bool showUrl)
         {
             TextColorSlider = 0;
-            TextAlpha = 1;
             BackgroundColorSlider = 0;
             BorderColorSlider = 0;
             BorderSizeSlider = 0;
@@ -50,7 +49,7 @@ namespace TextBoxGenerationTool.ViewModels
             set
             {
                 Set(ref _textColorSldier, value);
-                UpdateTextColor();
+                TextPickerBaseColor = SliderToColor(value);
             }
         }
 
@@ -61,7 +60,7 @@ namespace TextBoxGenerationTool.ViewModels
             set
             {
                 Set(ref _backgroundColorSlider, value);
-                UpdateBackgroundColor();
+                BackgroundPickerBaseColor = SliderToColor(value);
             }
         }
 
@@ -72,7 +71,7 @@ namespace TextBoxGenerationTool.ViewModels
             set
             {
                 Set(ref _borderColorSlider, value);
-                UpdateBorderColor();
+                BorderPickerBaseColor = SliderToColor(value);
             }
         }
 
@@ -149,6 +148,60 @@ namespace TextBoxGenerationTool.ViewModels
         {
             get => _borderColor;
             private set => Set(ref _borderColor, value);
+        }
+
+        private Color _backgroundPickerBaseColor;
+        public Color BackgroundPickerBaseColor
+        {
+            get => _backgroundPickerBaseColor;
+            private set => Set(ref _backgroundPickerBaseColor, value);
+        }
+
+        private Color _borderPickerBaseColor;
+        public Color BorderPickerBaseColor
+        {
+            get => _borderPickerBaseColor;
+            set => Set(ref _borderPickerBaseColor, value);
+        }
+
+        private Color _textPickerBaseColor;
+        public Color TextPickerBaseColor
+        {
+            get => _textPickerBaseColor;
+            set => Set(ref _textPickerBaseColor, value);
+        }
+
+        private Color _textPickedColor;
+        public Color TextPickedColor
+        {
+            get => _textPickedColor;
+            set
+            {
+                Set(ref _textPickedColor, value);
+                UpdateTextColor();
+            }
+        }
+
+        private Color _borderPickedColor;
+        public Color BorderPickedColor
+        {
+            get => _borderPickedColor;
+            set
+            {
+                Set(ref _borderPickedColor, value);
+                UpdateBorderColor();
+            }
+        }
+
+        private Color _backgroundPickedColor;
+        public Color BackgroundPickedColor
+        {
+            get => _backgroundPickedColor;
+            set
+            {
+                Set(ref _backgroundPickedColor, value);
+                UpdateBackgroundColor();
+            }
         }
 
         private string _selectedFont;
@@ -254,20 +307,55 @@ namespace TextBoxGenerationTool.ViewModels
 
         private void UpdateTextColor()
         {
-            var rgb = Color.FromHex(TextColorSlider.ToString("X").PadLeft(6, '0'));
-            TextColor = Color.FromRgba(rgb.R, rgb.G, rgb.B, TextAlpha);
+            TextColor = Color.FromRgba(TextPickedColor.R, TextPickedColor.G, TextPickedColor.B, TextAlpha);
         }
 
         private void UpdateBackgroundColor()
         {
-            var rgb = Color.FromHex(BackgroundColorSlider.ToString("X").PadLeft(6, '0'));
-            BackgroundColor = Color.FromRgba(rgb.R, rgb.G, rgb.B, BackgroundAlpha);
+            BackgroundColor = Color.FromRgba(BackgroundPickedColor.R, BackgroundPickedColor.G, BackgroundPickedColor.B, BackgroundAlpha);
         }
 
         private void UpdateBorderColor()
         {
-            var rgb = Color.FromHex(BorderColorSlider.ToString("X").PadLeft(6, '0'));
-            BorderColor = Color.FromRgba(rgb.R, rgb.G, rgb.B, BorderAlpha);
+            BorderColor = Color.FromRgba(BorderPickedColor.R, BorderPickedColor.G, BorderPickedColor.B, BorderAlpha);
+        }
+
+        private Color SliderToColor(int value)
+        {
+            int Reduce()
+            {
+                return 148 - (value % 68) - 68;
+            }
+
+            int Increase()
+            {
+                return 80 + (value % 68);
+            }
+
+            if (value < 69)
+            {
+                return Color.FromRgb(148, Increase(), 80);
+            }
+            else if (value < 137)
+            {
+                return Color.FromRgb(Reduce(), 148, 80);
+            }
+            else if (value < 205)
+            {
+                return Color.FromRgb(80, 148, Increase());
+            }
+            else if (value < 273)
+            {
+                return Color.FromRgb(80, Reduce(), 148);
+            }
+            else if (value < 341)
+            {
+                return Color.FromRgb(Increase(), 80, 148);
+            }
+            else
+            {
+                return Color.FromRgb(148, 80, Reduce());
+            }
         }
     }
 }

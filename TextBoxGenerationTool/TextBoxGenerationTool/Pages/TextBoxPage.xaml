@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:TextBoxGenerationTool.CustomControls;assembly=TextBoxGenerationTool"
+             xmlns:image="clr-namespace:TextBoxGenerationTool.Images;assembly=TextBoxGenerationTool"
              x:Class="TextBoxGenerationTool.Pages.TextBoxPage">
-    <ScrollView VerticalOptions="StartAndExpand">
+    <ScrollView VerticalOptions="Start">
         <Grid Padding="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -103,7 +104,7 @@
                 Grid.Column="0"
                 x:Name="TextColorSlider"
                 Minimum="0"
-                Maximum="16777215"
+                Maximum="408"
                 Value="{Binding TextColorSlider}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
@@ -123,14 +124,18 @@
                 Value="{Binding TextAlpha}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
-            <BoxView
+            <Frame
                 Grid.Row="4"
                 Grid.Column="1"
                 Grid.RowSpan="4"
-                x:Name="TextColorBoxView"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
-                BackgroundColor="{Binding TextColor}"
-                Opacity="{Binding TextAlpha}"/>
+                Padding="0">
+                <custom:ColorPickerControl 
+                    PickedColor="{Binding TextPickedColor}"
+                    BaseColor="{Binding TextPickerBaseColor}"/>
+            </Frame>
             <Label 
                 Grid.Row="8"
                 Grid.Column="0"
@@ -148,7 +153,7 @@
                 Grid.Column="0"
                 x:Name="BackgroundColorSlider"
                 Minimum="0"
-                Maximum="16777215"
+                Maximum="408"
                 Value="{Binding BackgroundColorSlider}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
@@ -168,14 +173,18 @@
                 Value="{Binding BackgroundAlpha}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
-            <BoxView
+            <Frame
                 Grid.Row="9"
                 Grid.Column="1"
                 Grid.RowSpan="4"
-                x:Name="BackgroundColorBoxView"
+                CornerRadius="0"
                 HorizontalOptions="FillAndExpand"
-                BackgroundColor="{Binding BackgroundColor}"
-                Opacity="{Binding BackgroundAlpha}"/>
+                VerticalOptions="FillAndExpand"
+                Padding="0">
+                <custom:ColorPickerControl 
+                    PickedColor="{Binding BackgroundPickedColor}"
+                    BaseColor="{Binding BackgroundPickerBaseColor}"/>
+            </Frame>
             <Label 
                 Grid.Row="13"
                 Grid.Column="0"
@@ -207,7 +216,7 @@
                 Grid.Column="0"
                 x:Name="BorderColorSlider"
                 Minimum="0"
-                Maximum="16777215"
+                Maximum="408"
                 Value="{Binding BorderColorSlider}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
@@ -227,14 +236,18 @@
                 Value="{Binding BorderAlpha}"
                 MinimumTrackColor="Red"
                 MaximumTrackColor="LightGray"/>
-            <BoxView
+            <Frame
                 Grid.Row="15"
                 Grid.Column="1"
                 Grid.RowSpan="4"
-                x:Name="BorderColorBoxView"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
-                BackgroundColor="{Binding BorderColor}"
-                Opacity="{Binding BorderAlpha}"/>
+                Padding="0">
+                <custom:ColorPickerControl 
+                    PickedColor="{Binding BorderPickedColor}"
+                    BaseColor="{Binding BorderPickerBaseColor}"/>
+            </Frame>
             <Label 
                 Grid.Row="19"
                 Grid.Column="0"
@@ -269,7 +282,8 @@
                 Grid.Row="21"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
                 Command="{Binding ClosePageCommand}"
                 Padding="10"
                 Text="Place Text"/>
