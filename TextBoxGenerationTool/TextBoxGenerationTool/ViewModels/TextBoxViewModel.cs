@@ -324,37 +324,37 @@ namespace TextBoxGenerationTool.ViewModels
         {
             int Reduce()
             {
-                return 148 - (value % 68) - 68;
+                return 255 - (value % 255);
             }
 
             int Increase()
             {
-                return 80 + (value % 68);
+                return value % 255;
             }
 
-            if (value < 69)
+            if (value < 256)
             {
-                return Color.FromRgb(148, Increase(), 80);
+                return Color.FromRgb(255, Increase(), 0);
             }
-            else if (value < 137)
+            else if (value < 511)
             {
-                return Color.FromRgb(Reduce(), 148, 80);
+                return Color.FromRgb(Reduce(), 255, 0);
             }
-            else if (value < 205)
+            else if (value < 766)
             {
-                return Color.FromRgb(80, 148, Increase());
+                return Color.FromRgb(0, 255, Increase());
             }
-            else if (value < 273)
+            else if (value < 1021)
             {
-                return Color.FromRgb(80, Reduce(), 148);
+                return Color.FromRgb(0, Reduce(), 255);
             }
-            else if (value < 341)
+            else if (value < 1276)
             {
-                return Color.FromRgb(Increase(), 80, 148);
+                return Color.FromRgb(Increase(), 0, 255);
             }
             else
             {
-                return Color.FromRgb(148, 80, Reduce());
+                return Color.FromRgb(255, 0, Reduce());
             }
         }
     }
