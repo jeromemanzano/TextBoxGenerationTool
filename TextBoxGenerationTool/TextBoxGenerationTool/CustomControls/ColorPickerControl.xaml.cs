@@ -10,6 +10,7 @@ namespace TextBoxGenerationTool.CustomControls
     public partial class ColorPickerControl : ContentView
     {
         public event EventHandler<Color> PickedColorChanged;
+        private bool _pickerInitialized = false;
 
         public static readonly BindableProperty PickedColorProperty
             = BindableProperty.Create(
@@ -41,7 +42,7 @@ namespace TextBoxGenerationTool.CustomControls
             set { SetValue(BaseColorProperty, value); }
         }
 
-        private SKPoint _lastTouchPoint = new SKPoint();
+        private SKPoint _lastTouchPoint;
 
         public ColorPickerControl()
         {
@@ -110,6 +111,17 @@ namespace TextBoxGenerationTool.CustomControls
             }
 
             SKColor touchPointColor;
+            var outerRingRadius =
+                ((float)skCanvasWidth / (float)skCanvasHeight) * (float)18;
+
+            var innerRingRadius =
+                ((float)skCanvasWidth / (float)skCanvasHeight) * (float)12;
+
+            if (!_pickerInitialized)
+            {
+                _pickerInitialized = true;
+                _lastTouchPoint = new SKPoint(skImageInfo.Width - innerRingRadius, innerRingRadius);
+            }
 
             using (SKBitmap bitmap = new SKBitmap(skImageInfo))
             {
@@ -129,8 +141,6 @@ namespace TextBoxGenerationTool.CustomControls
                 paintTouchPoint.Color = SKColors.White;
                 paintTouchPoint.IsAntialias = true;
 
-                var outerRingRadius =
-                    ((float)skCanvasWidth / (float)skCanvasHeight) * (float)18;
                 skCanvas.DrawCircle(
                     _lastTouchPoint.X,
                     _lastTouchPoint.Y,
@@ -138,8 +148,6 @@ namespace TextBoxGenerationTool.CustomControls
 
                 paintTouchPoint.Color = touchPointColor;
 
-                var innerRingRadius =
-                    ((float)skCanvasWidth / (float)skCanvasHeight) * (float)12;
                 skCanvas.DrawCircle(
                     _lastTouchPoint.X,
                     _lastTouchPoint.Y,

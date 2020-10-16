@@ -23,11 +23,14 @@ namespace TextBoxGenerationTool.ViewModels
         public override Task Initialize(bool showUrl)
         {
             TextColorSlider = 0;
-            BackgroundColorSlider = 0;
-            BorderColorSlider = 0;
+            BackgroundColorSlider = 511;
+            BorderColorSlider = 1021;
             BorderSizeSlider = 0;
             FontSizeSlider = 15;
             ShadowSizeSlider = 0;
+            TextAlpha = 1;
+            BackgroundAlpha = 1;
+            BorderAlpha = 1;
 
             SelectedFont = Fonts.First();
 
