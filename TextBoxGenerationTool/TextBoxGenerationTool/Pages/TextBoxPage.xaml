@@ -48,7 +48,6 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Fill"
                     x:Name="InputText"
-                    Placeholder="Type text here"
                     AutoSize="TextChanges"   
                     Margin="0"
                     IsSpellCheckEnabled="false"
